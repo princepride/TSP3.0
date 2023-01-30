@@ -3,6 +3,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class MainFrame extends JFrame{
 				arg0.drawLine(range+300+i*40, 480+(costArray[i]-costArray[times/10000-1])*260/deta, range+300+(i+1)*40, 480+(costArray[i+1]-costArray[times/10000-1])*260/deta);
 			}
 		}
-		arg0.drawString("×î¶ÌÂ·¾¶ÖµÎª£º"+Integer.toString(costArray[times/10000-1]), range+300, 600);
+		arg0.drawString("ï¿½ï¿½ï¿½Â·ï¿½ï¿½ÖµÎªï¿½ï¿½"+Integer.toString(costArray[times/10000-1]), range+300, 600);
 		
 	}
 	static class TestThread implements Runnable{
@@ -151,7 +152,8 @@ public class MainFrame extends JFrame{
 			maps.put(i, point);
 		}*/
 		try {
-			FileReader fileReader=new FileReader("D:\\Document\\newJava\\TSPCreatePoints\\Points.txt");
+			String filePath = new File("").getAbsolutePath();
+			FileReader fileReader=new FileReader(filePath+"\\Points.txt");
 			BufferedReader bufferedReader=new BufferedReader(fileReader);
 			for(int i=0;i<vector;i++) {
 				String string=bufferedReader.readLine();
@@ -159,6 +161,7 @@ public class MainFrame extends JFrame{
 				Point point=new Point(i,Integer.valueOf(xystr[0]),Integer.valueOf(xystr[1]));
 				maps.put(i, point);
 			}
+			bufferedReader.close();
 		} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
